@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_red_social/main.dart';
 
 class PantallaRedSocial extends StatelessWidget {
   const PantallaRedSocial({Key? key}) : super(key: key);
@@ -7,12 +8,13 @@ class PantallaRedSocial extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.red, // Color primario
+        primaryColor: Colors.red.shade100, // Color primario
         backgroundColor: Colors.white, // Color de fondo
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Red social'),
+          title: const Text('SocialInk'),
+          backgroundColor: Colors.red,
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -21,7 +23,7 @@ class PantallaRedSocial extends StatelessWidget {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  hintText: 'Buscar personas',
+                  hintText: 'Buscar amigos',
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.clear),
                     onPressed: () {},
@@ -52,11 +54,22 @@ class PantallaRedSocial extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text('Registro'),
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    child: const Text('Perfil'),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Salir'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PantallaInicioSesion(key: null)),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange.shade800),
+                    child: const Text('Cerrar sesion'),
                   ),
                 ],
               ),

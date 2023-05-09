@@ -1,11 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_red_social/pagina2.dart';
 
+void main() {
+  runApp(PantallaInicioSesion());
+}
+
 class PantallaInicioSesion extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   PantallaInicioSesion({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Material app',
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
+
+  get emailController => null;
+
+  get passwordController => null;
+
+  ElevatedButton buildRaisedButton(
+      {required VoidCallback onPressed, required Widget child}) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: child,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +45,8 @@ class PantallaInicioSesion extends StatelessWidget {
         builder: (BuildContext context) {
           return Scaffold(
             appBar: AppBar(
-              title: const Text('RedSocial'),
+              backgroundColor: Colors.red.shade400,
+              title: const Text('SocialInk'),
             ),
             backgroundColor:
                 Colors.white, // Definir color de fondo del Scaffold
@@ -26,37 +55,40 @@ class PantallaInicioSesion extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'imagenes/logo1.png', // Ruta de la imagen del logo
-                      height: 100.0,
-                    ),
+                    /*/Image.asset(
+                      '/imagenes/logo2.png', // Ruta de la imagen del logo
+                      height: 200.0,
+                    ),*/
                     const SizedBox(height: 20.0),
-                    Padding(
+                    Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: TextField(
                         controller: emailController,
                         decoration: const InputDecoration(
-                          hintText: 'Correo electrónico',
                           border: OutlineInputBorder(),
+                          fillColor: Color.fromARGB(0, 83, 52, 52),
+                          filled: true,
+                          hintText: 'Correo electrónico',
                         ),
                       ),
                     ),
                     const SizedBox(height: 20.0),
-                    Padding(
+                    Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: TextField(
-                        controller: passwordController,
-                        obscureText: true,
+                        controller: emailController,
                         decoration: const InputDecoration(
-                          hintText: 'Contraseña',
                           border: OutlineInputBorder(),
+                          fillColor: Color.fromARGB(0, 83, 52, 52),
+                          filled: true,
+                          hintText: 'Contraseña',
                         ),
                       ),
                     ),
                     const SizedBox(height: 20.0),
-                    ElevatedButton(
+                    buildRaisedButton(
                       onPressed: () {
-                        // Validar usuario y clave en la base de datos
+                        /*/ Validar usuario y clave en la base de datos
                         String email = emailController.text;
                         String password = passwordController.text;
                         bool validUser = validarUsuario(email, password);
@@ -90,6 +122,14 @@ class PantallaInicioSesion extends StatelessWidget {
                             },
                           );
                         }
+                      },/ */
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const PantallaRedSocial(key: null)),
+                        );
                       },
                       child: const Text('Iniciar sesión'),
                     ),
