@@ -76,6 +76,7 @@ class Home extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: TextField(
+                        obscureText: true,
                         controller: emailController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
